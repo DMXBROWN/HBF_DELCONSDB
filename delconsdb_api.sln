@@ -1,0 +1,29 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.28307.572
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "delconsdb_api", "delconsdb_api\delconsdb_api.csproj", "{B91F2D7D-49E1-420E-9DAA-80ED8AA9B636}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{B91F2D7D-49E1-420E-9DAA-80ED8AA9B636}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B91F2D7D-49E1-420E-9DAA-80ED8AA9B636}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B91F2D7D-49E1-420E-9DAA-80ED8AA9B636}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B91F2D7D-49E1-420E-9DAA-80ED8AA9B636}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6A0846F4-BC77-44FF-9EE1-ED9C3BCD0893}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6A0846F4-BC77-44FF-9EE1-ED9C3BCD0893}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6A0846F4-BC77-44FF-9EE1-ED9C3BCD0893}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6A0846F4-BC77-44FF-9EE1-ED9C3BCD0893}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {1D817B6B-2386-46C2-86CD-677F9B8AC0BC}
+	EndGlobalSection
+EndGlobal
