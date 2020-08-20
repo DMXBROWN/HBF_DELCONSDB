@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using delconsdb_api.Services;
 using Microsoft.AspNetCore.Http;
 using delconsdb_api.Models;
+using System.Collections.Generic;
 
 namespace delconsdb_api.Controllers
 {
@@ -38,6 +39,23 @@ namespace delconsdb_api.Controllers
                   {
                       return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
                   }
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin,manager")]
+        [ProducesResponseType(typeof(order), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<List<D_Gps_Interface> >TrackId()
+        {
+            
+            var trackid = _iuserservice.GetTrackId();
+
+            if (trackid == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(trackid);
         }
 
     }
