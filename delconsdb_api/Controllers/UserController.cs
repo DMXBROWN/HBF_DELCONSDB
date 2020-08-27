@@ -5,6 +5,7 @@ using delconsdb_api.Services;
 using Microsoft.AspNetCore.Http;
 using delconsdb_api.Models;
 using System.Collections.Generic;
+using delconsdb_api.Models.User;
 
 namespace delconsdb_api.Controllers
 {
@@ -32,6 +33,7 @@ namespace delconsdb_api.Controllers
                 {
                      return BadRequest(new { message = "User name or password is incorrect" });
                 }
+                
 
                 return Ok(result);
             }
@@ -41,9 +43,10 @@ namespace delconsdb_api.Controllers
                   }
         }
 
+       
         [HttpGet]
         [Authorize(Roles = "admin,manager")]
-        [ProducesResponseType(typeof(order), StatusCodes.Status200OK)]
+        [ProducesResponseType(typeof(D_Gps_Interface), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public ActionResult<List<D_Gps_Interface> >TrackId()
         {
@@ -56,6 +59,43 @@ namespace delconsdb_api.Controllers
             }
 
             return Ok(trackid);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin,manager")]
+        [ProducesResponseType(typeof(UserDetails), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<List<UserDetails>> UserDetails()
+        {
+            var currentUser = HttpContext.User;
+            string userid = currentUser.Identity.Name;
+            var users = _iuserservice.GetUserDetails(userid);
+
+            if (users == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(users);
+        }
+
+
+        [HttpPost]
+        [Authorize(Roles = "admin,manager")]
+        [ProducesResponseType(typeof(string), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public string UpdatePhoto( string file)
+        {
+            var currentUser = HttpContext.User;
+            string userid = currentUser.Identity.Name;
+            var users = _iuserservice.UploadPhoto(userid, file);
+
+            if (users == null)
+            {
+                return "";
+            }
+
+            return users;
         }
 
     }
