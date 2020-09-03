@@ -43,27 +43,71 @@ namespace delconsdb_api.Controllers
                   }
         }
 
-        //[AllowAnonymous]
-        //[HttpPost]
-        //public IActionResult GetProjects()
-        //{
-        //    try
-        //    {
-        //        var result = _iuserservice.LogIn(user.User_Id, user.Passwd);
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult<String> ProjectURL()
+        {
+            try
+            {
+                var result = _iuserservice.GetProjectURL();
 
-        //        if (result == null || result == String.Empty)
-        //        {
-        //            return BadRequest(new { message = "User name or password is incorrect" });
-        //        }
+                if (result == null || result == String.Empty)
+                {
+                    return NotFound();
+                }
 
 
-        //        return Ok(result);
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
-        //    }
-        //}
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult<String> ProductURL()
+        {
+            try
+            {
+                var result = _iuserservice.GetProductURL();
+
+                if (result == null || result == String.Empty)
+                {
+                    return NotFound();
+                }
+
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
+
+        [AllowAnonymous]
+        [HttpGet]
+        public ActionResult<String> DownloadURL()
+        {
+            try
+            {
+                var result = _iuserservice.GetDownloadURL();
+
+                if (result == null || result == String.Empty)
+                {
+                    return NotFound();
+                }
+
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+            }
+        }
 
 
         [HttpGet]
