@@ -43,7 +43,29 @@ namespace delconsdb_api.Controllers
                   }
         }
 
-       
+        //[AllowAnonymous]
+        //[HttpPost]
+        //public IActionResult GetProjects()
+        //{
+        //    try
+        //    {
+        //        var result = _iuserservice.LogIn(user.User_Id, user.Passwd);
+
+        //        if (result == null || result == String.Empty)
+        //        {
+        //            return BadRequest(new { message = "User name or password is incorrect" });
+        //        }
+
+
+        //        return Ok(result);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(StatusCodes.Status500InternalServerError, ex.Message);
+        //    }
+        //}
+
+
         [HttpGet]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(D_Gps_Interface), StatusCodes.Status200OK)]
