@@ -9,6 +9,7 @@ using delconsdb_api.Services;
 using delconsdb_api.Models;
 using delconsdb_api;
 using Microsoft.AspNetCore.Authorization;
+using delconsdb_api.Models.User;
 
 namespace delconsdb_api.Controllers
 {
@@ -27,11 +28,12 @@ namespace delconsdb_api.Controllers
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<List<Order> >Orders()
+        public ActionResult<List<Order> >Orders([FromBody] UserParameter param)
         {
             var currentUser = HttpContext.User;
             string userid = currentUser.Identity.Name;
-            var orders = _salesorderservice.RetrieveOrders(userid);
+           
+            var orders = _salesorderservice.RetrieveOrders(userid,param);
             
             if (orders==null)
             {
@@ -45,11 +47,11 @@ namespace delconsdb_api.Controllers
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Order_Enq), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
-        public ActionResult<List<Order_Enq>> OrdersEnquiry()
+        public ActionResult<List<Order_Enq>> OrdersEnquiry([FromBody] UserParameter param)
         {
             var currentUser = HttpContext.User;
             string userid = currentUser.Identity.Name;
-            var orders = _salesorderservice.RetrieveOrderEnquiry(userid);
+            var orders = _salesorderservice.RetrieveOrderEnquiry(userid, param);
 
             if (orders == null)
             {

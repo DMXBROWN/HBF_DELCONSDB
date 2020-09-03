@@ -98,5 +98,41 @@ namespace delconsdb_api.Controllers
             return users;
         }
 
+        [HttpGet]
+        [Authorize(Roles = "admin,manager")]
+        [ProducesResponseType(typeof(UserProject), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<List<UserProject>> GetProject()
+        {
+            var currentUser = HttpContext.User;
+            string userid = currentUser.Identity.Name;
+            var proj = _iuserservice.GetUserProject(userid);
+
+            if (proj == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(proj);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "admin,manager")]
+        [ProducesResponseType(typeof(UserProduct), StatusCodes.Status200OK)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public ActionResult<List<UserProduct>> GetUserProduct(string flag)
+        {
+            var currentUser = HttpContext.User;
+            string userid = currentUser.Identity.Name;
+            var proj = _iuserservice.GetUserProduct(userid, flag);
+
+            if (proj == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(proj);
+        }
+
     }
 }
