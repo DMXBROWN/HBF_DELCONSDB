@@ -24,7 +24,7 @@ namespace delconsdb_api.Controllers
             _salesorderservice = salesorderservice;
          }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Order), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -43,7 +43,7 @@ namespace delconsdb_api.Controllers
             return Ok(orders);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Order_Enq), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]

@@ -40,7 +40,7 @@ namespace delconsdb_api.Controllers
             return Ok(dnotes);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Dnote_Upcoming), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -57,7 +57,7 @@ namespace delconsdb_api.Controllers
             return Ok(dnotes);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Dnote_Deilvery_Details), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
@@ -74,7 +74,7 @@ namespace delconsdb_api.Controllers
             return Ok(dnotes);
         }
 
-        [HttpGet]
+        [HttpPost]
         [Authorize(Roles = "admin,manager")]
         [ProducesResponseType(typeof(Dnote_Upcoming), StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
