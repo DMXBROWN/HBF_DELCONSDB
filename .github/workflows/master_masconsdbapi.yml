@@ -53,5 +53,5 @@ jobs:
       with:
         app-name: 'masconsdbapi'
         slot-name: 'production'
-        publish-profile: ${{ secrets.AzureAppService_PublishProfile_ac67bbb5358c4192a5755781f3c6a8d0 }}
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_777ce273b2a8414381a45b744deaea28 }}
         package: .
